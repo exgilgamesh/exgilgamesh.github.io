@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>matrix_fast_power</title>
+    <url>//2021/10/30/matrix-fast-power/</url>
+    <content><![CDATA[矩阵快速幂加速递推来自本人luogu的blog搬运
+#include &lt;iostream>
+#define ll long long
+using namespace std;
+const int maxn = 100, maxm = 100;
+int i, j, mod;
+struct matrix
+&#123;
+  int n, m;
+  ll s[maxn][maxm];
+  matrix()
+  &#123;
+    clean();
+  &#125;
+  void clean()
+  &#123;
+    n = maxn, m = maxm;
+    for (int i = 0; i &lt; n; i++)
+      for (int j = 0; j &lt; n; j++)
+        s[i][j] = 0;
+  &#125;
+&#125; A, F0;                             //F0为初始矩阵，A为构造出的矩阵
+long long ss[maxn];
+matrix operator*(matrix a, matrix b) //重载*运算符
+&#123;
+  matrix c;
+  if (a.m != b.n)
+    return c;
+  c.n = a.n, c.m = a.m;
+  for (int j = 0; j &lt; c.m; j++)
+  &#123;
+    for (int i = 0; i &lt; c.n; i++)
+      ss[i] = b.s[i][j];
+    for (int i = 0; i &lt; c.n; i++)
+    &#123;
+      for (int k = 0; k &lt; a.m; k++)
+        c.s[i][j] += a.s[i][k] * ss[k];
+      c.s[i][j] %= mod;
+    &#125;
+  &#125;
+  return c;
+&#125;
+matrix pow(matrix a, int b)
+&#123;
+  matrix ans;
+  ans.n = a.n, ans.m = a.m;
+  for (int i = 0; i &lt; a.n; i++)
+    for (int j = 0; j &lt; a.m; j++)
+      ans.s[i][j] = (i == j); //构造单位矩阵
+  while (b)
+  &#123;
+    if (b &amp; 1)
+      ans = ans * a;
+    a = a * a;
+    b = b >> 1;
+  &#125;
+  return ans;
+&#125;
+int n, k = 2; //k为初始值个数，根据需要取
+int main()
+&#123;
+  for (i = 0; i &lt; k; i++)
+    cin >> A.s[0][i];
+  for (i = 0; i &lt; k; i++)
+    A.s[i][i - 1] = 1;
+  for (i = 0; i &lt; k; i++)
+    cin >> F0.s[k - i - 1][0];
+  cin >> n >> mod;
+  A.m = A.n = k, F0.m = 1, F0.n = k;
+  if (n &lt; k)
+  &#123;
+    cout &lt;&lt; F0.s[k - n - 1][0] &lt;&lt; endl;
+    return 0;
+  &#125;
+  cout &lt;&lt; (pow(A, n - k) * F0).s[0][0];
+&#125;
+
+
+
+    
+
+]]></content>
+  </entry>
+  <entry>
+    <title>清风十里不如你</title>
+    <url>//2021/10/30/%E6%B8%85%E9%A3%8E%E5%8D%81%E9%87%8C/</url>
+    <content><![CDATA[Dust to dust,ash to ash
+
+
+    
+
+]]></content>
+  </entry>
+  <entry>
+    <title>退役感想</title>
+    <url>//2021/11/21/%E9%80%80%E5%BD%B9%E6%84%9F%E6%83%B3/</url>
+    <content><![CDATA[仔细算来OI生涯也有5年了，昨天算是结束了。从初一的什么都不会的蒟蒻变成了什么都不会的咸鱼，我似乎是学了什么东西，又似乎什么也没学。但是回头看看，身边的人换了一批又一批，活到现在也许是艰难的吧。曾经无数次的爆0，是任何一个OI选手逃不开的，其实前几次的选拔之后，身边的人就所剩无几了。或是不感兴趣，或是没有时间，大家都找着合适的理由离开了。
+信竞对我来说，也许是初中那一点点美好的时光给我留下的最后的东西了。曾经稚嫩的笔记，丢了无数个的U盘，还有一声声关于妹子的自嘲，曾经那个整天喊着妹子妹子，却孑然一身的人，许是没有改变吧，不知怎地，大家都是ACG爱好者，甚至心理测试的结果都是INTP，一群志同道合，不怎么听老师话的朋友，随着最后一次比赛的结束都要各奔东西了。
+SCY，JLB虽然在初中没有见过你们，但是早有听说。JLB的题都做了几套了，DFSlover的名号，随着杭四中luogu团队的彻底荒废失传，到时又有谁在意团队的管理员到底是谁呢？DST外号信奥班大班长，他人在学军，却无私地对杭四提供支持，贡献了近期的数据，还有一套题。还有今年缺席的叶宝以及俊哥，大家都很想你们。
+我变了许多，不像以前有洞察力了，2018，T3众所周知的摆渡车，我跳过了，T4，我打的是正解，可是我当时不会hash，当时已经算是较好的发挥了。而现在看题，总是没有想法和思路了，不知为何。
+我受了许多打击，无论是初三的比赛，去年的初赛，还是今年的退役赛，都没有什么好结果。三位一体是我最讨厌的事情，而NOIP的唯一作用就是它，我也许是迷失了自我吧，再也找不回初二那种来玩玩的心态。付出了挺多的，尤其是高中之前的暑假，五年OI一场空的结局谁也不想看到吧。一鼓作气，再而衰，三而竭，高一的初赛对我的打击是致命的，怀疑颓废无奈失望涌向了我的全身，彻底击垮了吧。
+这次比赛，唯二的缺憾，就是T1的时间浪费，以及，HYP初二竟然给我详细证明过T3的一些结论，而我在赛场毫无头绪，东拼西凑终究是没有抓住本质。但是，比完了，反而我没有想象中的伤心，没有那种一生的遗憾的感觉，反而是很轻松，我看到了自己真正的内心，我还是因为喜欢这门竞赛才学的，以后也一定会打ACM，不久就是另一段旅途了，并不是我曾经想的误入歧途。
+我记得这个秋日运动会最后的晚阳，橙红色的日光穿过绮丽的云洒在信息楼的走廊，轻轻地吻了这里的孩子，耳语着：神的光芒终究会指引旅行者，前路的方向。
+
+
+    
+
+]]></content>
+  </entry>
+  <entry>
+    <title>聊聊《无职转生》:一个废柴的第二次人生</title>
+    <url>/2026/08/03/%E8%81%8A%E8%81%8A%E3%80%8A%E6%97%A0%E8%81%8C%E8%BD%AC%E7%94%9F%E3%80%8B%E4%B8%80%E4%B8%AA%E5%BA%9F%E6%9F%B4%E7%9A%84%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BA%BA%E7%94%9F/</url>
+    <content><![CDATA[《无职转生》算是我补番列表里拖得最久的一部。当初第一季开播时身边好几个人安利，我一看「34岁家里蹲转生异世界」的设定就有点犹豫——这类题材太多了，怕又是一部龙傲天流水线。结果真正看进去之后，发现它跟我预想的完全不是一回事。
+故事主角鲁迪乌斯前世是个 34 岁的家里蹲，意外去世后转生到剑与魔法的异世界。听起来很套路，但这部作品的「认真」恰恰体现在：他真的把第二次人生当成一次重新做人的机会，从小婴儿时期就开始一点点努力——学魔法、交朋友、读书、锻炼身体。
+异世界的冒险只是外壳，内核其实是成长：一个在现实里逃避了半辈子的人，如何在新的世界里学会面对自己。
+
+角色希露菲叶特是鲁迪的青梅竹马，温柔到让人心疼；艾莉丝是红发的暴力大小姐，傲娇得理直气壮；洛琪希是引导鲁迪入门的蓝发魔导师，也是无数观众的老婆（笑）。
+
+
+每个角色都有自己完整的弧光，不是那种给主角当陪衬的工具人。
+制作动画由 Studio Bind 制作，这家公司就是专门为这部作品成立的。作画细节真的没得说——魔法咏唱的手势、日常场景的光影、打斗的运镜，都能看出制作组是带着爱在做。
+
+感想网上对这部作品的争议一直不少，前世的设定确实劝退了一部分人。但抛开这些，我觉得它讲了一个非常朴素的道理：人生没有重来键，但任何时候开始认真生活都不算晚。
+如果你能接受它的争议点，这绝对是一部值得慢慢看完的作品。
+]]></content>
+  </entry>
+  <entry>
+    <title>日历看板</title>
+    <url>/calendar/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>分类</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>文章管理</title>
+    <url>/manage/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>搜索</title>
+    <url>/search/index.html</url>
+    <content><![CDATA[搜索
+]]></content>
+  </entry>
+  <entry>
+    <title>标签</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[标签
+]]></content>
+  </entry>
+  <entry>
+    <title>新建博客</title>
+    <url>/compose/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/live2dw/assets/z16.model.json</url>
+    <content><![CDATA[{"version":"Live2DViewerEX Config 1.0","model":"moc/z16.moc","textures":["moc/z16.1024/texture_00.png"],"layout":{"center_x":0,"center_y":0,"width":2},"motions":{"idle":[{"file":"mtn/idle.mtn"}]},"expressions":[{"name":"f00.exp.json","file":"exp/f00.exp.json"}],"physics":"z16.physics.json"}]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/live2dw/assets/z16.physics.json</url>
+    <content><![CDATA[{"type":"Live2D Physics","physics_hair":[{"setup":{"length":2,"regist":10,"mass":10},"src":[{"id":"PARAM_HAIR_FRONT","ptype":"x","scale":2,"weight":0.5},{"id":"PARAM_HAIR_SIDE","ptype":"x","scale":1,"weight":1},{"id":"PARAM_HAIR_BACK","ptype":"angle","scale":1,"weight":0.5},{"id":"PARAM_BODY_ANGLE_X","ptype":"angle","scale":1,"weight":1}],"targets":[]}]}]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/live2dw/assets/exp/f00.exp.json</url>
+    <content><![CDATA[{"type":"Live2D Expression","fade_in":500,"fade_out":500}]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/live2dw/lib/L2Dwidget.min.js</url>
+    <content><![CDATA[/*! https://github.com/xiazeyu/live2d-widget.js built@2019-4-6 09:38:17 */
+var L2Dwidget=function(t){var n=window.webpackJsonpL2Dwidget;window.webpackJsonpL2Dwidget=function(e,o,i){for(var c,u,a=0,s=[];a0?r:e)(t)}},function(t,n){t.exports=function(t){if(void 0==t)throw TypeError("Can't call method on  "+t);return t}},function(t,n,e){var r=e(51),o=e(19);t.exports=function(t){return r(o(t))}},function(t,n,e){var r=e(24)("keys"),o=e(16);t.exports=function(t){return r[t]||(r[t]=o(t))}},function(t,n,e){var r=e(11).f,o=e(8),i=e(0)("toStringTag");t.exports=function(t,n,e){t&&!o(t=e?t:t.prototype,i)&&r(t,i,{configurable:!0,value:n})}},function(t,n,e){"use strict";var r=e(14);t.exports.f=function(t){return new function(t){var n,e;this.promise=new t(function(t,r){if(void 0!==n||void 0!==e)throw TypeError("Bad Promise constructor");n=t,e=r}),this.resolve=r(n),this.reject=r(e)}(t)}},function(t,n,e){var r=e(1),o="__core-js_shared__",i=r[o]||(r[o]={});t.exports=function(t){return i[t]||(i[t]={})}},function(t,n){t.exports=function(t){try{return!!t()}catch(t){return!0}}},function(t,n){t.exports=function(t,n){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:n}}},function(t,n,e){"use strict";var r=e(28),o=e(12),i=e(5),c=e(3),u=e(8),a=e(9),s=e(47),f=e(22),l=e(54),p=e(0)("iterator"),d=!([].keys&&"next"in[].keys()),v="values",h=function(){return this};t.exports=function(t,n,e,y,m,b,w){s(e,n,y);var g,x,_,S=function(t){if(!d&&t in O)return O[t];switch(t){case"keys":case v:return function(){return new e(this,t)}}return function(){return new e(this,t)}},k=n+" Iterator",P=m==v,j=!1,O=t.prototype,T=O[p]||O["@@iterator"]||m&&O[m],L=!d&&T||S(m),E=m?P?S("entries"):L:void 0,M="Array"==n?O.entries||T:T;if(M&&(_=l(M.call(new t)))!==Object.prototype&&_.next&&(f(_,k,!0),r||u(_,p)||c(_,p,h)),P&&T&&T.name!==v&&(j=!0,L=function(){return T.call(this)}),r&&!w||!d&&!j&&O[p]||c(O,p,L),a[n]=L,a[k]=h,m)if(g={values:P?L:S(v),keys:b?L:S("keys"),entries:E},w)for(x in g)x in O||i(O,x,g[x]);else o(o.P+o.F*(d||j),n,g);return g}},function(t,n){t.exports=!1},function(t,n,e){var r=e(50),o=e(31);t.exports=Object.keys||function(t){return r(t,o)}},function(t,n,e){var r=e(18),o=Math.min;t.exports=function(t){return t>0?o(r(t),9007199254740991):0}},function(t,n){t.exports="constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(",")},function(t,n,e){var r=e(1).document;t.exports=r&&r.documentElement},function(t,n,e){var r=e(2),o=e(14),i=e(0)("species");t.exports=function(t,n){var e,c=r(t).constructor;return void 0===c||void 0==(e=r(c)[i])?n:o(e)}},function(t,n,e){var r,o,i,c=e(13),u=e(66),a=e(32),s=e(17),f=e(1),l=f.process,p=f.setImmediate,d=f.clearImmediate,v=f.MessageChannel,h=f.Dispatch,y=0,m={},b="onreadystatechange",w=function(){var t=+this;if(m.hasOwnProperty(t)){var n=m[t];delete m[t],n()}},g=function(t){w.call(t.data)};p&&d||(p=function(t){for(var n=[],e=1;arguments.length>e;)n.push(arguments[e++]);return m[++y]=function(){u("function"==typeof t?t:Function(t),n)},r(y),y},d=function(t){delete m[t]},"process"==e(10)(l)?r=function(t){l.nextTick(c(w,t,1))}:h&&h.now?r=function(t){h.now(c(w,t,1))}:v?(i=(o=new v).port2,o.port1.onmessage=g,r=c(i.postMessage,i,1)):f.addEventListener&&"function"==typeof postMessage&&!f.importScripts?(r=function(t){f.postMessage(t+"","*")},f.addEventListener("message",g,!1)):r=b in s("script")?function(t){a.appendChild(s("script"))[b]=function(){a.removeChild(this),w.call(t)}}:function(t){setTimeout(c(w,t,1),0)}),t.exports={set:p,clear:d}},function(t,n){t.exports=function(t){try{return{e:!1,v:t()}}catch(t){return{e:!0,v:t}}}},function(t,n,e){var r=e(2),o=e(6),i=e(23);t.exports=function(t,n){if(r(t),o(n)&&n.constructor===t)return n;var e=i.f(t);return(0,e.resolve)(n),e.promise}},function(t,n,e){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.L2Dwidget=void 0;var r,o=function(){function t(t,n){for(var e=0;e1?n-1:0),r=1;r0&&void 0!==arguments[0]?arguments[0]:{};(0,u.configApplyer)(n),this.emit("config",this.config),!u.config.mobile.show&&c.default.mobile()||e.e(0).then(e.bind(null,76)).then(function(n){(a=n).theRealInit(t)}).catch(function(t){console.error(t)})}},{key:"captureFrame",value:function(t){return a.captureFrame(t)}},{key:"downloadFrame",value:function(){this.captureFrame(function(t){var n=document.createElement("a");document.body.appendChild(n),n.setAttribute("type","hidden"),n.href=t,n.download="live2d.png",n.click()})}}]),t}());n.L2Dwidget=s},function(t,n,e){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.config=n.configApplyer=void 0;var r=i(e(74)),o=i(e(75));function i(t){return t&&t.__esModule?t:{default:t}}var c={};n.configApplyer=function(t){(0,o.default)(c,t,r.default)},n.config=c},function(t,n,e){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},o=window.device,i={},c=[];window.device=i;var u=window.document.documentElement,a=window.navigator.userAgent.toLowerCase(),s=["googletv","viera","smarttv","internet.tv","netcast","nettv","appletv","boxee","kylo","roku","dlnadoc","roku","pov_tv","hbbtv","ce-html"];i.macos=function(){return f("mac")},i.ios=function(){return i.iphone()||i.ipod()||i.ipad()},i.iphone=function(){return!i.windows()&&f("iphone")},i.ipod=function(){return f("ipod")},i.ipad=function(){return f("ipad")},i.android=function(){return!i.windows()&&f("android")},i.androidPhone=function(){return i.android()&&f("mobile")},i.androidTablet=function(){return i.android()&&!f("mobile")},i.blackberry=function(){return f("blackberry")||f("bb10")||f("rim")},i.blackberryPhone=function(){return i.blackberry()&&!f("tablet")},i.blackberryTablet=function(){return i.blackberry()&&f("tablet")},i.windows=function(){return f("windows")},i.windowsPhone=function(){return i.windows()&&f("phone")},i.windowsTablet=function(){return i.windows()&&f("touch")&&!i.windowsPhone()},i.fxos=function(){return(f("(mobile")||f("(tablet"))&&f(" rv:")},i.fxosPhone=function(){return i.fxos()&&f("mobile")},i.fxosTablet=function(){return i.fxos()&&f("tablet")},i.meego=function(){return f("meego")},i.cordova=function(){return window.cordova&&"file:"===location.protocol},i.nodeWebkit=function(){return"object"===r(window.process)},i.mobile=function(){return i.androidPhone()||i.iphone()||i.ipod()||i.windowsPhone()||i.blackberryPhone()||i.fxosPhone()||i.meego()},i.tablet=function(){return i.ipad()||i.androidTablet()||i.blackberryTablet()||i.windowsTablet()||i.fxosTablet()},i.desktop=function(){return!i.tablet()&&!i.mobile()},i.television=function(){for(var t=0;t1},i.landscape=function(){return window.innerHeight/window.innerWidthf;)if((u=a[f++])!=u)return!0}else for(;s>f;f++)if((t||f in a)&&a[f]===e)return t||f||0;return!t&&-1}}},function(t,n,e){var r=e(18),o=Math.max,i=Math.min;t.exports=function(t,n){return(t=r(t))i;)c(e[i++]);t._c=[],t._n=!1,n&&!t._h&&A(t)})}},A=function(t){m.call(a,function(){var n,e,r,o=t._v,i=C(t);if(i&&(n=g(function(){j?k.emit("unhandledRejection",o,t):(e=a.onunhandledrejection)?e({promise:t,reason:o}):(r=a.console)&&r.error&&r.error("Unhandled promise rejection",o)}),t._h=j||C(t)?2:1),t._a=void 0,i&&n.e)throw n.v})},C=function(t){return 1!==t._h&&0===(t._a||t._c).length},F=function(t){m.call(a,function(){var n;j?k.emit("rejectionHandled",t):(n=a.onrejectionhandled)&&n({promise:t,reason:t._v})})},N=function(t){var n=this;n._d||(n._d=!0,(n=n._w||n)._v=t,n._s=2,n._a||(n._a=n._c.slice()),M(n,!0))},R=function(t){var n,e=this;if(!e._d){e._d=!0,e=e._w||e;try{if(e===t)throw S("Promise can't be resolved itself");(n=E(t))?b(function(){var r={_w:e,_d:!1};try{n.call(t,s(R,r,1),s(N,r,1))}catch(t){N.call(r,t)}}):(e._v=t,e._s=1,M(e,!1))}catch(t){N.call({_w:e,_d:!1},t)}}};L||(P=function(t){v(this,P,_,"_h"),d(t),r.call(this);try{t(s(R,this,1),s(N,this,1))}catch(t){N.call(this,t)}},(r=function(t){this._c=[],this._a=void 0,this._s=0,this._d=!1,this._v=void 0,this._h=0,this._n=!1}).prototype=e(68)(P.prototype,{then:function(t,n){var e=T(y(this,P));return e.ok="function"!=typeof t||t,e.fail="function"==typeof n&&n,e.domain=j?k.domain:void 0,this._c.push(e),this._a&&this._a.push(e),this._s&&M(this,!1),e.promise},catch:function(t){return this.then(void 0,t)}}),i=function(){var t=new r;this.promise=t,this.resolve=s(R,t,1),this.reject=s(N,t,1)},w.f=T=function(t){return t===P||t===c?new i(t):o(t)}),l(l.G+l.W+l.F*!L,{Promise:P}),e(22)(P,_),e(69)(_),c=e(4)[_],l(l.S+l.F*!L,_,{reject:function(t){var n=T(this);return(0,n.reject)(t),n.promise}}),l(l.S+l.F*(u||!L),_,{resolve:function(t){return x(u&&this===c?P:this,t)}}),l(l.S+l.F*!(L&&e(70)(function(t){P.all(t).catch(O)})),_,{all:function(t){var n=this,e=T(n),r=e.resolve,o=e.reject,i=g(function(){var e=[],i=0,c=1;h(t,!1,function(t){var u=i++,a=!1;e.push(void 0),c++,n.resolve(t).then(function(t){a||(a=!0,e[u]=t,--c||r(e))},o)}),--c||r(e)});return i.e&&o(i.v),e.promise},race:function(t){var n=this,e=T(n),r=e.reject,o=g(function(){h(t,!1,function(t){n.resolve(t).then(e.resolve,r)})});return o.e&&r(o.v),e.promise}})},function(t,n){t.exports=function(t,n,e,r){if(!(t instanceof n)||void 0!==r&&r in t)throw TypeError(e+": incorrect invocation!");return t}},function(t,n,e){var r=e(13),o=e(63),i=e(64),c=e(2),u=e(30),a=e(65),s={},f={};(n=t.exports=function(t,n,e,l,p){var d,v,h,y,m=p?function(){return t}:a(t),b=r(e,l,n?2:1),w=0;if("function"!=typeof m)throw TypeError(t+" is not iterable!");if(i(m)){for(d=u(t.length);d>w;w++)if((y=n?b(c(v=t[w])[0],v[1]):b(t[w]))===s||y===f)return y}else for(h=m.call(t);!(v=h.next()).done;)if((y=o(h,b,v.value,n))===s||y===f)return y}).BREAK=s,n.RETURN=f},function(t,n,e){var r=e(2);t.exports=function(t,n,e,o){try{return o?n(r(e)[0],e[1]):n(e)}catch(n){var i=t.return;throw void 0!==i&&r(i.call(t)),n}}},function(t,n,e){var r=e(9),o=e(0)("iterator"),i=Array.prototype;t.exports=function(t){return void 0!==t&&(r.Array===t||i[o]===t)}},function(t,n,e){var r=e(15),o=e(0)("iterator"),i=e(9);t.exports=e(4).getIteratorMethod=function(t){if(void 0!=t)return t[o]||t["@@iterator"]||i[r(t)]}},function(t,n){t.exports=function(t,n,e){var r=void 0===e;switch(n.length){case 0:return r?t():t.call(e);case 1:return r?t(n[0]):t.call(e,n[0]);case 2:return r?t(n[0],n[1]):t.call(e,n[0],n[1]);case 3:return r?t(n[0],n[1],n[2]):t.call(e,n[0],n[1],n[2]);case 4:return r?t(n[0],n[1],n[2],n[3]):t.call(e,n[0],n[1],n[2],n[3])}return t.apply(e,n)}},function(t,n,e){var r=e(1),o=e(34).set,i=r.MutationObserver||r.WebKitMutationObserver,c=r.process,u=r.Promise,a="process"==e(10)(c);t.exports=function(){var t,n,e,s=function(){var r,o;for(a&&(r=c.domain)&&r.exit();t;){o=t.fn,t=t.next;try{o()}catch(r){throw t?e():n=void 0,r}}n=void 0,r&&r.enter()};if(a)e=function(){c.nextTick(s)};else if(!i||r.navigator&&r.navigator.standalone)if(u&&u.resolve){var f=u.resolve();e=function(){f.then(s)}}else e=function(){o.call(r,s)};else{var l=!0,p=document.createTextNode("");new i(s).observe(p,{characterData:!0}),e=function(){p.data=l=!l}}return function(r){var o={fn:r,next:void 0};n&&(n.next=o),t||(t=o,e()),n=o}}},function(t,n,e){var r=e(5);t.exports=function(t,n,e){for(var o in n)r(t,o,n[o],e);return t}},function(t,n,e){"use strict";var r=e(1),o=e(11),i=e(7),c=e(0)("species");t.exports=function(t){var n=r[t];i&&n&&!n[c]&&o.f(n,c,{configurable:!0,get:function(){return this}})}},function(t,n,e){var r=e(0)("iterator"),o=!1;try{var i=[7][r]();i.return=function(){o=!0},Array.from(i,function(){throw 2})}catch(t){}t.exports=function(t,n){if(!n&&!o)return!1;var e=!1;try{var i=[7],c=i[r]();c.next=function(){return{done:e=!0}},i[r]=function(){return c},t(i)}catch(t){}return e}},function(t,n,e){"use strict";var r=e(12),o=e(4),i=e(1),c=e(33),u=e(36);r(r.P+r.R,"Promise",{finally:function(t){var n=c(this,o.Promise||i.Promise),e="function"==typeof t;return this.then(e?function(e){return u(n,t()).then(function(){return e})}:t,e?function(e){return u(n,t()).then(function(){throw e})}:t)}})},function(t,n,e){"use strict";var r=e(12),o=e(23),i=e(35);r(r.S,"Promise",{try:function(t){var n=o.f(this),e=i(t);return(e.e?n.reject:n.resolve)(e.v),n.promise}})},function(t,n,e){"use strict";Object.defineProperty(n,"__esModule",{value:!0});function r(){try{return document.currentScript.src}catch(n){var t=document.getElementsByTagName("script");return t[t.length-1].src}}e.p=r().replace(/[^/\\\\]+$/,""),n.getCurrentPath=r},function(t,n,e){"use strict";t.exports={model:{jsonPath:"https://unpkg.com/live2d-widget-model-shizuku@latest/assets/shizuku.model.json",scale:1},display:{superSample:2,width:200,height:400,position:"right",hOffset:0,vOffset:-20},mobile:{show:!0,scale:.8,motion:!0},name:{canvas:"live2dcanvas",div:"live2d-widget"},react:{opacity:1},dev:{border:!1},dialog:{enable:!1,hitokoto:!1}}},function(t,n,e){"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t};t.exports=function t(n,e){n=n||{};function o(n,e){for(var o in e)if(e.hasOwnProperty(o)){var i=e[o];if("__proto__"===o)continue;var c=n[o];null==c?n[o]=i:"object"===(void 0===c?"undefined":r(c))&&null!==c&&"object"===(void 0===i?"undefined":r(i))&&null!==i&&t(c,i)}}for(var i=arguments.length,c=0;c]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/live2dw/lib/L2Dwidget.0.min.js</url>
+    <content><![CDATA[/*! https://github.com/xiazeyu/live2d-widget.js built@2019-4-6 09:38:17 */
+webpackJsonpL2Dwidget([0],{76:function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.captureFrame=e.theRealInit=void 0;var r,o=i(38),n=i(80),s=i(77),a=i(78),_=i(84),h=i(81),l=i(79),$=i(39),u=(r=$,r&&r.__esModule?r:{default:r}),p=i(37);var c=null,f=void 0,g=!1,d=null,y=null,m=null,T=null,P=!1,S=.5;function v(t,e,i){if(e.xi.top)return e;var r=t.x-e.x,o=t.y-e.y;function n(t,e){return 180*Math.acos((i={x:0,y:1},r=function(t,e){var i=Math.sqrt(t*t+e*e);return{x:t/i,y:e/i}}(t,e),i.x*r.x+i.y*r.y))/Math.PI;var i,r}var s=n(r,o);e.x]]></content>
+  </entry>
+</search>

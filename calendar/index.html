@@ -1,0 +1,435 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hexo</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    
+    <meta name="author" content="John Doe"> 
+    <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="Hexo"/>
+    
+    
+    
+    
+    
+    <meta property="og:site_name" content="Hexo"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="Hexo"/>
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script>window.searchDbPath = "/search.xml";</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Hexo</span>
+    <div id="loader"></div>
+    <div class="nav">
+    <ul id="menu-menu" class="menu">
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="//" title="首页" target="_blank" rel="noopener">首页</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/categories/" title="分类" target="_blank" rel="noopener">分类</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/tags/" title="标签" target="_blank" rel="noopener">标签</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/archives/" title="归档" target="_blank" rel="noopener">归档</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/about/" title="关于" target="_blank" rel="noopener">关于</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/compose/" title="写文章" target="_blank" rel="noopener">写文章</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/manage/" title="文章管理" target="_blank" rel="noopener">文章管理</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/calendar/" title="日历" target="_blank" rel="noopener">日历</a>
+        </li>
+        
+    </ul>
+	<span class="target"></span>
+	<center>
+	<div class="hitokoto">
+		<span class="typed" id="hitokoto" data-st="true"></span>
+	</div>
+	</center>
+	
+	<p class="footerlinks">
+		<a href="#" class="iconfont icon-null"></a>
+		
+            <a href="/" title="facebook" class="iconfont icon-facebook" target="_blank" rel="noopener"> </a>
+        
+            <a href="/" title="twitter" class="iconfont icon-twitter" target="_blank" rel="noopener"> </a>
+        
+            <a href="/" title="github" class="iconfont icon-github" target="_blank" rel="noopener"> </a>
+        
+            <a href="/img/logo.png" title="wechat" class="iconfont icon-wechat" target="_blank" rel="noopener"> </a>
+        
+            <a href="mailto:xxxx@gmail.com" title="email" class="iconfont icon-email" target="_blank" rel="noopener"> </a>
+        
+		<a href="#" class="iconfont icon-null"></a>
+	</p>
+	
+    <p id="copyright">
+        &copy; 2026 John Doe.
+        <span> | </span>Powered by <a href="https://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        <span> | </span>Theme <a href="https://github.com/Fechin/hexo-theme-diaspora" title="Diaspora" target="_blank" rel="noopener">Diaspora</a> by Fechin
+		
+		<span> | </span><a rel="nofollow" href="http://www.beian.miit.gov.cn" target="_blank">冀ICP备xxxxxxx号</a>
+		
+    </p>
+</div>
+
+    <div id="calendar-wrap">
+        <div class="calendar-card">
+            <div class="calendar-head">
+                <h1 class="calendar-title">日历看板</h1>
+                <div class="calendar-bar">
+                    <input id="cal-token" type="password" placeholder="GitHub Token（读取 exgilgamesh/hexo-blog）" title="Fine-grained token，需含 exgilgamesh/hexo-blog 的 Contents: Read 权限" />
+                    <button id="cal-load" type="button" class="calendar-load">加载</button>
+                    <span id="cal-status" class="cal-status"></span>
+                </div>
+                <div class="calendar-hint">
+                    打开页面即自动加载全部文章并渲染为月历（公开仓库，无需 Token）；点击日期上的文章标题即可跳转阅读。Token 仅在本浏览器 localStorage 中保存。
+                </div>
+            </div>
+            <div id="cal-calendar"></div>
+        </div>
+    </div>
+</body>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script>
+
+<script src="/js/fullcalendar.min.js"></script>
+<script>
+(function () {
+    // ==== 中文 locale（bundle 未内置 zh-cn，手动注册，精简自官方 locales/zh-cn.js）====
+    FullCalendar.globalLocales.push({
+        code: 'zh-cn',
+        week: { dow: 1, doy: 4 },
+        buttonText: { prev: '上月', next: '下月', today: '今天', year: '年', month: '月', week: '周', day: '日', list: '日程' },
+        weekText: '周',
+        allDayText: '全天',
+        moreLinkText: function (n) { return '另外 ' + n + ' 个'; },
+        noEventsText: '没有事件'
+    });
+
+    var TOKEN_KEY = 'gh_compose_token';
+    var REPO = 'exgilgamesh/hexo-blog';
+    var POSTS_PATH = 'source/_posts/';
+
+    var tokenInput = document.getElementById('cal-token');
+    var loadBtn = document.getElementById('cal-load');
+    var statusEl = document.getElementById('cal-status');
+    var calendarEl = document.getElementById('cal-calendar');
+    var calendar = null;
+
+    // 自动填充已保存的 Token
+    (function () {
+        try { tokenInput.value = localStorage.getItem(TOKEN_KEY) || ''; } catch (e) {}
+    })();
+
+    function setStatus(text, cls) {
+        statusEl.textContent = text;
+        statusEl.className = 'cal-status' + (cls ? ' ' + cls : '');
+    }
+
+    function apiHeaders(token) {
+        var h = {
+            'Accept': 'application/vnd.github+json',
+            'X-GitHub-Api-Version': '2022-11-28'
+        };
+        if (token) h['Authorization'] = 'Bearer ' + token;
+        return h;
+    }
+
+    function handleRes(res, fallbackMsg) {
+        if (res.ok) return res.json();
+        return res.json().then(function (err) {
+            var msg = (err && err.message) || fallbackMsg;
+            if (res.status === 401) msg = 'Token 无效，请检查';
+            if (res.status === 403) msg = 'Token 权限不足或无访问权限（需 Contents: Read）';
+            if (res.status === 404) msg = '仓库或路径不存在，请检查 Token 权限';
+            throw new Error(msg);
+        });
+    }
+
+    // GitHub base64 内容解码（content 可能带换行）
+    function decodeContent(content) {
+        return decodeURIComponent(escape(atob(content.replace(/\n/g, ''))));
+    }
+
+    // 解析 front matter：---\ntitle: xxx\ndate: 2021-10-30 15:00:04\npermalink: /xxx/\n---
+    function parseFrontMatter(md) {
+        var info = { title: null, date: null, permalink: null };
+        var m = md.match(/^---\s*\n([\s\S]*?)\n---/);
+        var fm = m ? m[1] : '';
+        function pick(re) {
+            var r = fm.match(re);
+            return r ? r[1].trim() : null;
+        }
+        var title = pick(/^title:\s*(.+)$/m);
+        if (title) title = title.replace(/^['"]|['"]$/g, '').trim(); // 兼容带引号的 title
+        info.title = title;
+        info.date = pick(/^date:\s*(.+)$/m);
+        info.permalink = pick(/^permalink:\s*(.+)$/m);
+        return info;
+    }
+
+    // 文章 URL：有 permalink 用之，否则 /YYYY/MM/DD/文件名/
+    function buildUrl(info, filename) {
+        if (info.permalink) return info.permalink;
+        var d = info.date.match(/^(\d{4})-(\d{2})-(\d{2})/);
+        if (!d) return null;
+        return '/' + d[1] + '/' + d[2] + '/' + d[3] + '/' + encodeURIComponent(filename.replace(/\.md$/i, '')) + '/';
+    }
+
+    // 分块并发拉取每篇文章，单个失败跳过不影响整体
+    function fetchPosts(files, headers) {
+        var events = [];
+        var CHUNK = 10;
+        function chunk(i) {
+            if (i >= files.length) return Promise.resolve();
+            return Promise.all(files.slice(i, i + CHUNK).map(function (f) {
+                return fetch('https://api.github.com/repos/' + REPO + '/contents/' + encodeURIComponent(f.path), { headers: headers })
+                    .then(function (res) { return res.ok ? res.json() : null; })
+                    .then(function (data) {
+                        if (!data || !data.content) return;
+                        var info = parseFrontMatter(decodeContent(data.content));
+                        if (!info.title || !info.date) return;
+                        var d = info.date.match(/^(\d{4})-(\d{2})-(\d{2})/);
+                        if (!d) return;
+                        var url = buildUrl(info, f.name);
+                        if (!url) return;
+                        events.push({ title: info.title, start: d[1] + '-' + d[2] + '-' + d[3], url: url });
+                    })
+                    .catch(function () {});
+            })).then(function () { return chunk(i + CHUNK); });
+        }
+        return chunk(0).then(function () {
+            events.sort(function (a, b) { return a.start < b.start ? -1 : a.start > b.start ? 1 : 0; });
+            return events;
+        });
+    }
+
+    function renderCalendar(events) {
+        if (!calendar) {
+            calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'zh-cn',
+                height: 'auto',
+                headerToolbar: { left: 'prev,next', center: 'title', right: '' },
+                initialDate: events.length ? events[events.length - 1].start : undefined,
+                events: events,
+                eventClick: function (info) {
+                    if (info.event.url) {
+                        info.jsEvent.preventDefault();
+                        window.location.href = info.event.url;
+                    }
+                }
+            });
+            calendar.render();
+        } else {
+            // 已渲染过则只更新事件，保留当前视图
+            calendar.removeAllEvents();
+            calendar.addEventSource(events);
+        }
+    }
+
+    // ==== 加载（公开仓库免 Token，自动读取全部文章）====
+    function load() {
+        var token = tokenInput.value.trim();
+        if (token) { try { localStorage.setItem(TOKEN_KEY, token); } catch (e) {} }
+
+        loadBtn.disabled = true;
+        setStatus('正在读取文章列表…', 'busy');
+
+        fetch('https://api.github.com/repos/' + REPO + '/contents/' + encodeURIComponent(POSTS_PATH), { headers: apiHeaders(token) })
+            .then(function (res) { return handleRes(res, '读取文章列表失败'); })
+            .then(function (items) {
+                var files = (items || []).filter(function (it) { return it.type === 'file' && /\.md$/i.test(it.name); });
+                if (!files.length) { setStatus('未找到任何 .md 文章', 'err'); return; }
+                setStatus('共 ' + files.length + ' 篇文章，正在读取内容…', 'busy');
+                return fetchPosts(files, apiHeaders(token));
+            })
+            .then(function (events) {
+                if (!events || !events.length) { setStatus('未解析到有效文章（缺少 date/title）', 'err'); return; }
+                renderCalendar(events);
+                setStatus('已加载 ' + events.length + ' 篇文章 ✓', 'ok');
+            })
+            .catch(function (e) {
+                setStatus('加载失败：' + e.message, 'err');
+            })
+            .finally(function () { loadBtn.disabled = false; });
+    }
+
+    loadBtn.addEventListener('click', load);
+    tokenInput.addEventListener('keydown', function (e) { if (e.key === 'Enter') load(); });
+
+    // 打开页面自动加载（公开仓库免 Token）
+    load();
+})();
+</script>
+<style>
+#calendar-wrap { padding: 130px 24px 40px; max-width: 620px; margin: 0 auto; }
+.calendar-card { background: #fff; border: 1px solid #e8e8e8; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,.05); padding: 22px 26px; }
+.calendar-head { margin-bottom: 16px; }
+.calendar-title { font-size: 22px; margin: 0 0 12px; color: #333; font-weight: 600; }
+.calendar-bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+#cal-token { flex: 1; min-width: 220px; max-width: 340px; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 13px; }
+.calendar-load { padding: 8px 22px; border: 1px solid #2c5f2d; background: #2c5f2d; color: #fff; border-radius: 6px; cursor: pointer; font-size: 14px; }
+.calendar-load:hover { background: #3a7a3b; }
+.calendar-load:disabled { opacity: 0.6; cursor: wait; }
+.cal-status { font-size: 13px; white-space: nowrap; }
+.cal-status.ok { color: #2c5f2d; }
+.cal-status.err { color: #c33; }
+.cal-status.busy { color: #b8860b; }
+.calendar-hint { margin-top: 10px; font-size: 12.5px; color: #999; }
+.calendar-hint code { background: #f4f4f4; padding: 1px 5px; border-radius: 4px; font-family: Consolas, monospace; }
+
+/* ==== 日历本体：经典博客日历风格(仿博客园侧边栏) ==== */
+#cal-calendar .fc {
+    font-size: 14px;
+    font-family: 'Songti SC', 'Noto Serif CJK SC', 'SimSun', 'STSong', Georgia, serif;
+}
+/* 标题栏：衬线加粗 + 简洁 < > 导航 */
+#cal-calendar .fc-toolbar { margin-bottom: 10px; }
+#cal-calendar .fc-toolbar-title {
+    font-size: 19px; font-weight: 700; color: #333; letter-spacing: 2px;
+}
+#cal-calendar .fc-button {
+    background: transparent; border: none; color: #999; font-size: 18px;
+    padding: 0 10px; box-shadow: none; font-family: Georgia, serif;
+}
+#cal-calendar .fc-button:hover { color: #c33; background: transparent; }
+#cal-calendar .fc-button:focus, #cal-calendar .fc-button:active { box-shadow: none; outline: none; }
+#cal-calendar .fc-button-group .fc-button { border: none; }
+/* 网格：细灰线表格 */
+#cal-calendar .fc-scrollgrid { border: 1px solid #e5e5e5; border-radius: 4px; overflow: hidden; }
+#cal-calendar .fc-scrollgrid-section > td { border-color: #eee; }
+#cal-calendar th.fc-col-header-cell {
+    border: 1px solid #eee; background: #fafafa; padding: 7px 0;
+}
+#cal-calendar .fc-col-header-cell-cushion {
+    font-weight: 400; color: #666; font-size: 13px; padding: 0;
+}
+#cal-calendar .fc-daygrid-day { border: 1px solid #f2f2f2; }
+#cal-calendar .fc-daygrid-day-frame { min-height: 46px; }
+/* 日期数字 */
+#cal-calendar .fc-daygrid-day-number {
+    color: #555; font-size: 13px; padding: 5px 7px; text-decoration: none;
+}
+#cal-calendar .fc-day-other .fc-daygrid-day-number { color: #ccc; }
+/* 今天：红字 + 下划线(博客园经典样式) */
+#cal-calendar .fc-daygrid-day.fc-day-today { background: transparent; }
+#cal-calendar .fc-day-today .fc-daygrid-day-number {
+    color: #d22; font-weight: 700; text-decoration: underline;
+}
+/* 文章事件：淡红小标签 */
+#cal-calendar .fc-daygrid-event {
+    background: #fdf1f0; border: 1px solid #f3d9d6; color: #b03a2e;
+    border-radius: 3px; font-size: 11px; padding: 0 4px; margin: 1px 3px;
+    font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+#cal-calendar .fc-daygrid-event:hover { background: #fae2de; }
+#cal-calendar .fc-h-event .fc-event-main { color: inherit; }
+@media (max-width: 800px) {
+    #calendar-wrap { padding: 120px 12px 30px; }
+    .calendar-card { padding: 14px; }
+}
+</style>
+</html>

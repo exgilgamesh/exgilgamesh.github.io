@@ -1,0 +1,523 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hexo</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    
+    <meta name="author" content="John Doe"> 
+    <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="Hexo"/>
+    
+    
+    
+    
+    
+    <meta property="og:site_name" content="Hexo"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="Hexo"/>
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script>window.searchDbPath = "/search.xml";</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Hexo</span>
+    <div id="loader"></div>
+    <div class="nav">
+    <ul id="menu-menu" class="menu">
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="//" title="首页" target="_blank" rel="noopener">首页</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/categories/" title="分类" target="_blank" rel="noopener">分类</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/tags/" title="标签" target="_blank" rel="noopener">标签</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/archives/" title="归档" target="_blank" rel="noopener">归档</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/about/" title="关于" target="_blank" rel="noopener">关于</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/compose/" title="写文章" target="_blank" rel="noopener">写文章</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/manage/" title="文章管理" target="_blank" rel="noopener">文章管理</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/calendar/" title="日历" target="_blank" rel="noopener">日历</a>
+        </li>
+        
+    </ul>
+	<span class="target"></span>
+	<center>
+	<div class="hitokoto">
+		<span class="typed" id="hitokoto" data-st="true"></span>
+	</div>
+	</center>
+	
+	<p class="footerlinks">
+		<a href="#" class="iconfont icon-null"></a>
+		
+            <a href="/" title="facebook" class="iconfont icon-facebook" target="_blank" rel="noopener"> </a>
+        
+            <a href="/" title="twitter" class="iconfont icon-twitter" target="_blank" rel="noopener"> </a>
+        
+            <a href="/" title="github" class="iconfont icon-github" target="_blank" rel="noopener"> </a>
+        
+            <a href="/img/logo.png" title="wechat" class="iconfont icon-wechat" target="_blank" rel="noopener"> </a>
+        
+            <a href="mailto:xxxx@gmail.com" title="email" class="iconfont icon-email" target="_blank" rel="noopener"> </a>
+        
+		<a href="#" class="iconfont icon-null"></a>
+	</p>
+	
+    <p id="copyright">
+        &copy; 2026 John Doe.
+        <span> | </span>Powered by <a href="https://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        <span> | </span>Theme <a href="https://github.com/Fechin/hexo-theme-diaspora" title="Diaspora" target="_blank" rel="noopener">Diaspora</a> by Fechin
+		
+		<span> | </span><a rel="nofollow" href="http://www.beian.miit.gov.cn" target="_blank">冀ICP备xxxxxxx号</a>
+		
+    </p>
+</div>
+
+    <div id="manage-wrap">
+        <h1 class="manage-title">文章管理</h1>
+        <div class="manage-bar">
+            <input id="m-token" type="password" placeholder="GitHub Token" title="Fine-grained token，需含 exgilgamesh/hexo-blog 的 Contents: Read and write 权限" />
+            <button id="m-load" type="button" class="manage-primary">加载</button>
+            <span id="m-status" class="manage-status"></span>
+        </div>
+        <div class="manage-tabs">
+            <button id="tab-posts" type="button" class="manage-tab active">文章 <span id="count-posts" class="manage-count"></span></button>
+            <button id="tab-trash" type="button" class="manage-tab">回收站 <span id="count-trash" class="manage-count"></span></button>
+        </div>
+        <div id="panel-posts" class="manage-panel">
+            <div id="posts-list" class="manage-list"></div>
+        </div>
+        <div id="panel-trash" class="manage-panel" style="display:none">
+            <div id="trash-list" class="manage-list"></div>
+        </div>
+        <div class="manage-hint">
+            打开页面即自动加载文章列表（公开仓库，无需 Token）；编辑跳转到写文章页（<code>/compose/?file=…</code>，自动载入原文）；删除会把文章移入
+            <code>source/_trash/</code> 回收站（GitHub 上保留，可随时恢复）。删除/恢复/彻底删除等写操作需要 Token（仅保存在本浏览器 localStorage）。
+        </div>
+    </div>
+</body>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script>
+
+<script>
+(function () {
+    'use strict';
+
+    var TOKEN_KEY = 'gh_compose_token';
+    var REPO = 'exgilgamesh/hexo-blog';
+    var BRANCH = 'main';
+    var POSTS_DIR = 'source/_posts';
+    var TRASH_DIR = 'source/_trash';
+    var API = 'https://api.github.com/repos/' + REPO + '/contents/';
+
+    var tokenInput = document.getElementById('m-token');
+    var loadBtn = document.getElementById('m-load');
+    var statusEl = document.getElementById('m-status');
+    var tabPosts = document.getElementById('tab-posts');
+    var tabTrash = document.getElementById('tab-trash');
+    var panelPosts = document.getElementById('panel-posts');
+    var panelTrash = document.getElementById('panel-trash');
+    var postsList = document.getElementById('posts-list');
+    var trashList = document.getElementById('trash-list');
+    var countPosts = document.getElementById('count-posts');
+    var countTrash = document.getElementById('count-trash');
+
+    var busy = false; // 全局防重复点击
+
+    (function () {
+        try { tokenInput.value = localStorage.getItem(TOKEN_KEY) || ''; } catch (e) {}
+    })();
+
+    function setStatus(text, cls) {
+        statusEl.textContent = text;
+        statusEl.className = 'manage-status' + (cls ? ' ' + cls : '');
+    }
+
+    function getToken() { return tokenInput.value.trim(); }
+
+    function escapeHtml(s) {
+        return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    // 路径逐段 encodeURIComponent
+    function encPath(p) {
+        return p.split('/').map(encodeURIComponent).join('/');
+    }
+
+    function decodeContent(b64) {
+        return decodeURIComponent(escape(atob(b64.replace(/\n/g, ''))));
+    }
+    function encodeContent(text) {
+        return btoa(unescape(encodeURIComponent(text)));
+    }
+
+    function apiRequest(method, path, body) {
+        var headers = {
+            'Accept': 'application/vnd.github+json',
+            'X-GitHub-Api-Version': '2022-11-28'
+        };
+        var token = getToken();
+        if (method !== 'GET' && !token) {
+            return Promise.reject(new Error('需要 GitHub Token 才能执行写操作'));
+        }
+        if (token) headers['Authorization'] = 'Bearer ' + token;
+        var opt = { method: method, headers: headers };
+        if (body) opt.body = JSON.stringify(body);
+        return fetch(API + encPath(path), opt).then(function (res) {
+            return res.json().catch(function () { return {}; }).then(function (data) {
+                if (!res.ok) {
+                    var msg = data.message || ('HTTP ' + res.status);
+                    if (res.status === 401) msg = 'Token 无效，请检查';
+                    if (res.status === 403 && data.message && data.message.indexOf('rate limit') >= 0) msg = 'API 请求受限（限流），请稍后再试';
+                    if (res.status === 404) msg = '未找到：' + path;
+                    var err = new Error(msg);
+                    err.status = res.status;
+                    throw err;
+                }
+                return data;
+            });
+        });
+    }
+
+    function formatSize(bytes) {
+        if (bytes == null) return '';
+        if (bytes < 1024) return bytes + ' B';
+        if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+        return (bytes / 1024 / 1024).toFixed(2) + ' MB';
+    }
+
+    function setBusy(flag, row) {
+        busy = flag;
+        loadBtn.disabled = flag;
+        var lists = [postsList, trashList];
+        for (var i = 0; i < lists.length; i++) {
+            lists[i].classList.toggle('manage-busy', flag);
+        }
+        if (row) row.classList.toggle('manage-op', flag);
+    }
+
+    // ==== 加载列表（公开仓库免 Token 读取，写操作仍需 Token）====
+    function loadLists() {
+        setBusy(true);
+        setStatus('加载中…', 'busy');
+        Promise.all([
+            apiRequest('GET', POSTS_DIR),
+            apiRequest('GET', TRASH_DIR).catch(function (e) {
+                if (e.status === 404) return []; // 回收站目录尚不存在
+                throw e;
+            })
+        ]).then(function (results) {
+            renderPosts(results[0] || []);
+            renderTrash(results[1] || []);
+            try { localStorage.setItem(TOKEN_KEY, getToken()); } catch (e) {}
+            setStatus('加载完成 ✓', 'ok');
+        }).catch(function (e) {
+            setStatus('加载失败：' + e.message, 'err');
+        }).finally(function () {
+            setBusy(false);
+        });
+    }
+
+    function renderPosts(items) {
+        var files = (items || []).filter(function (f) { return f.type === 'file' && /\.md$/i.test(f.name); });
+        countPosts.textContent = files.length ? '(' + files.length + ')' : '';
+        if (!files.length) {
+            postsList.innerHTML = '<div class="manage-empty">暂无文章，去「写文章」页发布第一篇吧</div>';
+            return;
+        }
+        files.sort(function (a, b) { return a.name.localeCompare(b.name); });
+        postsList.innerHTML = files.map(function (f) {
+            var fullPath = POSTS_DIR + '/' + f.name;
+            return '<div class="manage-row" data-path="' + fullPath + '" data-sha="' + f.sha + '">' +
+                '<span class="row-name" title="' + escapeHtml(fullPath) + '">' + escapeHtml(f.name) + '</span>' +
+                '<span class="row-size">' + formatSize(f.size) + '</span>' +
+                '<span class="row-actions">' +
+                '<a class="manage-btn" href="/compose/?file=' + encodeURIComponent(fullPath) + '">编辑</a>' +
+                '<button type="button" class="manage-btn manage-danger" data-act="delete">删除</button>' +
+                '</span></div>';
+        }).join('');
+    }
+
+    function renderTrash(items) {
+        var files = (items || []).filter(function (f) { return f.type === 'file' && /\.md$/i.test(f.name); });
+        countTrash.textContent = files.length ? '(' + files.length + ')' : '';
+        if (!files.length) {
+            trashList.innerHTML = '<div class="manage-empty">回收站是空的</div>';
+            return;
+        }
+        files.sort(function (a, b) { return a.name.localeCompare(b.name); });
+        trashList.innerHTML = files.map(function (f) {
+            var fullPath = TRASH_DIR + '/' + f.name;
+            return '<div class="manage-row" data-path="' + fullPath + '" data-sha="' + f.sha + '">' +
+                '<span class="row-name" title="' + escapeHtml(fullPath) + '">' + escapeHtml(f.name) + '</span>' +
+                '<span class="row-size">' + formatSize(f.size) + '</span>' +
+                '<span class="row-actions">' +
+                '<button type="button" class="manage-btn" data-act="restore">恢复</button>' +
+                '<button type="button" class="manage-btn manage-danger" data-act="purge">彻底删除</button>' +
+                '</span></div>';
+        }).join('');
+    }
+
+    // ==== 删除文章（移入回收站）====
+    function doDelete(row) {
+        var path = row.getAttribute('data-path');
+        var sha = row.getAttribute('data-sha');
+        var name = path.split('/').pop();
+        if (!confirm('确定删除「' + name + '」？文章将移入回收站，可随时恢复。')) return;
+        setBusy(true, row);
+        setStatus('删除中…', 'busy');
+        apiRequest('GET', path).then(function (data) {
+            var content = decodeContent(data.content);
+            return apiRequest('PUT', TRASH_DIR + '/' + name, {
+                message: 'Move to trash: ' + name,
+                content: encodeContent(content),
+                branch: BRANCH
+            }).then(function () {
+                return apiRequest('DELETE', path, {
+                    message: 'Delete: ' + name,
+                    sha: sha || data.sha,
+                    branch: BRANCH
+                });
+            });
+        }).then(function () {
+            setStatus('已删除「' + name + '」并移入回收站 ✓', 'ok');
+            loadLists();
+        }).catch(function (e) {
+            setStatus('删除失败：' + e.message, 'err');
+        }).finally(function () {
+            setBusy(false, row);
+        });
+    }
+
+    // ==== 从回收站恢复 ====
+    function doRestore(row) {
+        var path = row.getAttribute('data-path');
+        var sha = row.getAttribute('data-sha');
+        var name = path.split('/').pop();
+        if (!confirm('确定恢复「' + name + '」到文章列表？')) return;
+        setBusy(true, row);
+        setStatus('恢复中…', 'busy');
+        apiRequest('GET', path).then(function (data) {
+            var content = decodeContent(data.content);
+            return apiRequest('PUT', POSTS_DIR + '/' + name, {
+                message: 'Restore: ' + name,
+                content: encodeContent(content),
+                branch: BRANCH
+            }).then(function () {
+                return apiRequest('DELETE', path, {
+                    message: 'Delete from trash: ' + name,
+                    sha: sha || data.sha,
+                    branch: BRANCH
+                });
+            });
+        }).then(function () {
+            setStatus('已恢复「' + name + '」✓', 'ok');
+            loadLists();
+        }).catch(function (e) {
+            setStatus('恢复失败：' + e.message, 'err');
+        }).finally(function () {
+            setBusy(false, row);
+        });
+    }
+
+    // ==== 彻底删除 ====
+    function doPurge(row) {
+        var path = row.getAttribute('data-path');
+        var sha = row.getAttribute('data-sha');
+        var name = path.split('/').pop();
+        if (!confirm('确定彻底删除「' + name + '」？此操作不可恢复！')) return;
+        setBusy(true, row);
+        setStatus('删除中…', 'busy');
+        apiRequest('DELETE', path, {
+            message: 'Purge: ' + name,
+            sha: sha,
+            branch: BRANCH
+        }).then(function () {
+            setStatus('已彻底删除「' + name + '」✓', 'ok');
+            loadLists();
+        }).catch(function (e) {
+            setStatus('删除失败：' + e.message, 'err');
+        }).finally(function () {
+            setBusy(false, row);
+        });
+    }
+
+    // ==== 事件绑定 ====
+    loadBtn.addEventListener('click', loadLists);
+    tokenInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') loadLists();
+    });
+
+    tabPosts.addEventListener('click', function () { switchTab('posts'); });
+    tabTrash.addEventListener('click', function () { switchTab('trash'); });
+    function switchTab(which) {
+        var isPosts = which === 'posts';
+        tabPosts.className = 'manage-tab' + (isPosts ? ' active' : '');
+        tabTrash.className = 'manage-tab' + (isPosts ? '' : ' active');
+        panelPosts.style.display = isPosts ? '' : 'none';
+        panelTrash.style.display = isPosts ? 'none' : '';
+    }
+
+    postsList.addEventListener('click', function (e) {
+        if (busy || !(e.target instanceof Element)) return;
+        var btn = e.target.closest('button[data-act]');
+        if (!btn) return;
+        if (btn.getAttribute('data-act') === 'delete') doDelete(btn.closest('.manage-row'));
+    });
+
+    trashList.addEventListener('click', function (e) {
+        if (busy || !(e.target instanceof Element)) return;
+        var btn = e.target.closest('button[data-act]');
+        if (!btn) return;
+        var act = btn.getAttribute('data-act');
+        if (act === 'restore') doRestore(btn.closest('.manage-row'));
+        else if (act === 'purge') doPurge(btn.closest('.manage-row'));
+    });
+
+    // 打开页面自动加载（公开仓库免 Token）
+    loadLists();
+})();
+</script>
+<style>
+#manage-wrap { padding: 130px 24px 40px; max-width: 900px; margin: 0 auto; }
+.manage-title { font-size: 24px; font-weight: 600; margin: 0 0 18px; }
+.manage-bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+#m-token { flex: 1; min-width: 260px; max-width: 480px; padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; outline: none; }
+#m-token:focus { border-color: #9ab; }
+.manage-primary { background: #2c5f2d !important; color: #fff !important; border-color: #2c5f2d !important; }
+.manage-primary:hover { background: #3a7a3b !important; }
+.manage-primary:disabled { opacity: 0.6; cursor: wait; }
+.manage-status { font-size: 13px; white-space: nowrap; }
+.manage-status.ok { color: #2c5f2d; }
+.manage-status.err { color: #c33; }
+.manage-status.busy { color: #b8860b; }
+
+.manage-tabs { display: flex; gap: 6px; border-bottom: 2px solid #eee; margin-bottom: 14px; }
+.manage-tab { padding: 9px 20px; border: none; background: none; cursor: pointer; font-size: 15px; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; }
+.manage-tab:hover { color: #333; }
+.manage-tab.active { color: #2c5f2d; font-weight: 600; border-bottom-color: #2c5f2d; }
+.manage-count { font-size: 12px; color: #999; font-weight: 400; }
+
+.manage-panel { min-height: 120px; }
+.manage-list { border: 1px solid #e5e5e5; border-radius: 10px; overflow: hidden; }
+.manage-busy { opacity: 0.55; pointer-events: none; }
+.manage-row { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #f0f0f0; background: #fff; }
+.manage-row:last-child { border-bottom: none; }
+.manage-row:hover { background: #fafbfa; }
+.manage-row.manage-op { opacity: 0.55; pointer-events: none; }
+.row-name { flex: 1; font-size: 14.5px; color: #333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.row-size { font-size: 12.5px; color: #999; white-space: nowrap; min-width: 62px; text-align: right; }
+.row-actions { display: flex; gap: 8px; white-space: nowrap; }
+.manage-btn { padding: 5px 14px; border: 1px solid #ddd; background: #fff; border-radius: 6px; cursor: pointer; font-size: 13px; color: #444; text-decoration: none; display: inline-block; line-height: 1.5; }
+.manage-btn:hover { background: #f5f5f5; color: #333; }
+.manage-danger:hover { background: #fdeaea !important; color: #c33; border-color: #ecc; }
+.manage-empty { padding: 36px 16px; text-align: center; color: #999; font-size: 14px; }
+.manage-hint { margin-top: 14px; font-size: 12.5px; color: #999; line-height: 1.8; }
+.manage-hint code { background: #f4f4f4; padding: 1px 5px; border-radius: 4px; font-family: Consolas, monospace; }
+@media (max-width: 800px) {
+    #manage-wrap { padding: 120px 12px 30px; }
+    .row-size { display: none; }
+}
+</style>
+</html>

@@ -1,0 +1,558 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hexo</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    
+    <meta name="author" content="John Doe"> 
+    <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="Hexo"/>
+    
+    
+    
+    
+    
+    <meta property="og:site_name" content="Hexo"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="Hexo"/>
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script>window.searchDbPath = "/search.xml";</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<link rel="stylesheet" href="/css/easymde.min.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX", "TeX"], linebreaks: { automatic: true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [["$", "$"], ["\\(", "\\)"]], processEscapes: true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] },
+        TeX: { noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<body class="loading">
+    <span id="config-title" style="display:none">Hexo</span>
+    <div id="loader"></div>
+    <div class="nav">
+    <ul id="menu-menu" class="menu">
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="//" title="首页" target="_blank" rel="noopener">首页</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/categories/" title="分类" target="_blank" rel="noopener">分类</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/tags/" title="标签" target="_blank" rel="noopener">标签</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/archives/" title="归档" target="_blank" rel="noopener">归档</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/about/" title="关于" target="_blank" rel="noopener">关于</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/compose/" title="写文章" target="_blank" rel="noopener">写文章</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/manage/" title="文章管理" target="_blank" rel="noopener">文章管理</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/calendar/" title="日历" target="_blank" rel="noopener">日历</a>
+        </li>
+        
+    </ul>
+	<span class="target"></span>
+	<center>
+	<div class="hitokoto">
+		<span class="typed" id="hitokoto" data-st="true"></span>
+	</div>
+	</center>
+	
+	<p class="footerlinks">
+		<a href="#" class="iconfont icon-null"></a>
+		
+            <a href="/" title="facebook" class="iconfont icon-facebook" target="_blank" rel="noopener"> </a>
+        
+            <a href="/" title="twitter" class="iconfont icon-twitter" target="_blank" rel="noopener"> </a>
+        
+            <a href="/" title="github" class="iconfont icon-github" target="_blank" rel="noopener"> </a>
+        
+            <a href="/img/logo.png" title="wechat" class="iconfont icon-wechat" target="_blank" rel="noopener"> </a>
+        
+            <a href="mailto:xxxx@gmail.com" title="email" class="iconfont icon-email" target="_blank" rel="noopener"> </a>
+        
+		<a href="#" class="iconfont icon-null"></a>
+	</p>
+	
+    <p id="copyright">
+        &copy; 2026 John Doe.
+        <span> | </span>Powered by <a href="https://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        <span> | </span>Theme <a href="https://github.com/Fechin/hexo-theme-diaspora" title="Diaspora" target="_blank" rel="noopener">Diaspora</a> by Fechin
+		
+		<span> | </span><a rel="nofollow" href="http://www.beian.miit.gov.cn" target="_blank">冀ICP备xxxxxxx号</a>
+		
+    </p>
+</div>
+
+    <div id="compose-wrap">
+        <div class="compose-bar">
+            <input id="c-title" type="text" placeholder="文章标题" />
+            <input id="c-date" type="text" title="发布日期 (YYYY-MM-DD HH:mm:ss)" />
+            <span id="c-stats" class="compose-stats"></span>
+            <span class="compose-spacer"></span>
+            <input id="c-token" type="password" placeholder="GitHub Token（用于发布/上传图片）" title="Fine-grained token，需含 exgilgamesh/hexo-blog 的 Contents: Read and write 权限" />
+            <button id="c-publish" type="button" class="compose-publish">发布到 GitHub</button>
+            <span id="c-pub-status" class="compose-status"></span>
+            <button id="c-copy" type="button">复制 Markdown</button>
+            <button id="c-download" type="button">下载 .md</button>
+            <button id="c-clear" type="button" class="compose-danger">清空</button>
+        </div>
+        <textarea id="c-input" placeholder="在这里输入 Markdown…（可 Ctrl+V 直接粘贴图片）"></textarea>
+        <div class="compose-hint">
+            工具栏「图片」按钮或直接粘贴(Ctrl+V)即可上传图片到 <code>source/images/</code> 并自动插入。点击「发布到 GitHub」直接上线（自动构建部署约 1-2 分钟）；Token 仅保存在本浏览器 localStorage。
+            Ctrl+S 快捷下载。
+        </div>
+    </div>
+</body>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script>
+
+<script src="/js/easymde.min.js"></script>
+<script>
+(function () {
+    var titleInput = document.getElementById('c-title');
+    var dateInput = document.getElementById('c-date');
+    var stats = document.getElementById('c-stats');
+    var tokenInput = document.getElementById('c-token');
+    var pubStatus = document.getElementById('c-pub-status');
+
+    // ==== 工具函数 ====
+    function nowStr() {
+        var d = new Date();
+        function p(n) { return (n < 10 ? '0' : '') + n; }
+        return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()) +
+            ' ' + p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds());
+    }
+    function setStatus(text, cls) {
+        pubStatus.textContent = text;
+        pubStatus.className = 'compose-status' + (cls ? ' ' + cls : '');
+    }
+    function base64Unicode(str) { return btoa(unescape(encodeURIComponent(str))); }
+    function base64Decode(b64) { return decodeURIComponent(escape(atob(b64.replace(/\n/g, '')))); }
+    function slugify(s) {
+        return s.trim().replace(/\s+/g, '-').replace(/[\\/:*?"<>|#]/g, '').slice(0, 60) || 'untitled';
+    }
+    function sanitizeName(name) {
+        return name.replace(/[^\w.\u4e00-\u9fff-]/g, '_').replace(/\s+/g, '_');
+    }
+    var TOKEN_KEY = 'gh_compose_token';
+    var PUB_REPO = 'exgilgamesh/hexo-blog';
+    var PUB_BRANCH = 'main';
+    function apiHeaders(token) {
+        var h = {
+            'Accept': 'application/vnd.github+json',
+            'X-GitHub-Api-Version': '2022-11-28'
+        };
+        if (token) h['Authorization'] = 'Bearer ' + token;
+        return h;
+    }
+    function apiUrl(path) {
+        return 'https://api.github.com/repos/' + PUB_REPO + '/contents/' +
+            path.split('/').map(encodeURIComponent).join('/');
+    }
+    function getToken() { return tokenInput.value.trim(); }
+
+    (function () { try { tokenInput.value = localStorage.getItem(TOKEN_KEY) || ''; } catch (e) {} })();
+    dateInput.value = nowStr();
+
+    // ==== EasyMDE 编辑器 ====
+    var mde = new EasyMDE({
+        element: document.getElementById('c-input'),
+        autofocus: false,
+        spellChecker: false,
+        autoDownloadFontAwesome: false,
+        minHeight: '520px',
+        placeholder: '在这里输入 Markdown…（可 Ctrl+V 直接粘贴图片）',
+        status: ['words', 'lines', 'cursor'],
+        previewClass: 'content',
+        renderingConfig: { singleLineBreaks: false, codeSyntaxHighlighting: false },
+        toolbar: [
+            'bold', 'italic', 'heading', '|',
+            'quote', 'code', 'unordered-list', 'ordered-list', '|',
+            'link', 'image', '|',
+            'preview', 'side-by-side', 'fullscreen', '|', 'guide'
+        ],
+        uploadImage: true,
+        imagePathAbsolute: true,
+        imageUploadFunction: function (file, onSuccess, onError) {
+            uploadImage(file, onSuccess, onError);
+        }
+    });
+
+    // 补上主题正文排版类(classList.add 不接受带空格类名,故分步添加)
+    ['editor-preview', 'editor-preview-full', 'editor-preview-side'].forEach(function (cls) {
+        var el = document.querySelector('.' + cls);
+        if (el) { el.classList.add('content'); el.classList.add('markdown'); }
+    });
+
+    // ==== 预览状态同步 + 公式排版 ====
+    // EasyMDE 2.18 只把 editor-preview-active/-side 加在预览元素上,容器缺失导致
+    // CodeMirror 不隐藏、预览定位错乱(文字重叠)。这里同步类到容器,并触发 MathJax 排版。
+    var mjTimer = null;
+    function syncPreviewState() {
+        var container = document.querySelector('.EasyMDEContainer');
+        if (!container) return;
+        var full = document.querySelector('.editor-preview-full');
+        var side = document.querySelector('.editor-preview-side');
+        container.classList.toggle('editor-preview-active',
+            !!(full && full.classList.contains('editor-preview-active')));
+        container.classList.toggle('editor-preview-active-side',
+            !!(side && side.classList.contains('editor-preview-active-side')));
+        // 公式排版(防抖)
+        if (window.MathJax) {
+            clearTimeout(mjTimer);
+            mjTimer = setTimeout(function () {
+                var els = [full, side].filter(function (el) { return el && getComputedStyle(el).display !== 'none'; });
+                if (els.length) MathJax.Hub.Queue(['Typeset', MathJax.Hub].concat(els));
+            }, 200);
+        }
+    }
+    new MutationObserver(syncPreviewState).observe(
+        document.querySelector('.EasyMDEContainer'),
+        { attributes: true, subtree: true, attributeFilter: ['class'] }
+    );
+    // MathJax 异步加载完成后,若预览已显示则立即排版
+    if (window.MathJax && MathJax.Hub) { syncPreviewState(); }
+    window.addEventListener('load', syncPreviewState);
+
+    function md() { return mde.value(); }
+
+    // 统计
+    function updateStats() {
+        var text = md();
+        var chars = text.length;
+        var words = (text.match(/[\u4e00-\u9fff]/g) || []).length + (text.match(/[A-Za-z0-9]+/g) || []).length;
+        var lines = text ? text.split('\n').length : 0;
+        stats.textContent = chars + ' 字符 · ' + words + ' 词 · ' + lines + ' 行';
+    }
+    mde.codemirror.on('change', updateStats);
+    updateStats();
+
+    // ==== 图片上传（文件选择器按钮 + Ctrl+V 粘贴）====
+    function uploadImage(file, onSuccess, onError) {
+        var token = getToken();
+        if (!token) { onError('请先填入 GitHub Token'); tokenInput.focus(); return; }
+        if (!/^image\//.test(file.type)) { onError('只能上传图片文件'); return; }
+        if (file.size > 5 * 1024 * 1024) { onError('图片不能超过 5MB'); return; }
+
+        var ts = new Date();
+        function p(n) { return (n < 10 ? '0' : '') + n; }
+        var prefix = ts.getFullYear() + p(ts.getMonth() + 1) + p(ts.getDate()) + '-' + p(ts.getHours()) + p(ts.getMinutes()) + p(ts.getSeconds());
+        var name = prefix + '-' + sanitizeName(file.name || 'image.png');
+        var path = 'source/images/' + name;
+
+        var reader = new FileReader();
+        reader.onload = function () {
+            var b64 = reader.result.split(',')[1];
+            setStatus('图片上传中…', 'busy');
+            fetch(apiUrl(path), {
+                method: 'PUT',
+                headers: apiHeaders(token),
+                body: JSON.stringify({ message: 'Add image ' + name, content: b64, branch: PUB_BRANCH })
+            }).then(function (res) {
+                if (!res.ok) return res.json().then(function (e) { throw new Error(e.message || ('HTTP ' + res.status)); });
+                setStatus('图片已上传 ✓', 'ok');
+                onSuccess('/images/' + name);
+            }).catch(function (e) {
+                setStatus('图片上传失败：' + e.message, 'err');
+                onError(e.message);
+            });
+        };
+        reader.readAsDataURL(file);
+    }
+
+    // 粘贴图片
+    document.addEventListener('paste', function (e) {
+        var items = (e.clipboardData || {}).items || [];
+        for (var i = 0; i < items.length; i++) {
+            if (items[i].kind === 'file' && items[i].type.indexOf('image/') === 0) {
+                var file = items[i].getAsFile();
+                e.preventDefault();
+                uploadImage(file, function (url) {
+                    mde.codemirror.replaceSelection('![](' + url + ')');
+                    updateStats();
+                }, function () {});
+                break;
+            }
+        }
+    });
+
+    // ==== 构建文章文件 ====
+    function buildMd() {
+        var title = titleInput.value.trim() || '未命名';
+        var date = dateInput.value.trim() || nowStr();
+        var body = md().trim();
+        return '---\ntitle: "' + title.replace(/"/g, '\\"') + '"\ndate: ' + date + '\n---\n\n' + body + '\n';
+    }
+
+    // ==== 编辑模式：?file=source/_posts/xxx.md ====
+    var editFile = null, editSha = null;
+    var qs = new URLSearchParams(location.search);
+    var fileParam = qs.get('file');
+    if (fileParam) {
+        // 公开仓库免 Token 读取；有 Token 则带上
+        fetch(apiUrl(fileParam), { headers: apiHeaders(getToken()) })
+            .then(function (r) {
+                if (r.status === 401 || r.status === 403) {
+                    return r.json().then(function (j) {
+                        var err = new Error(j.message || ('HTTP ' + r.status));
+                        err.__status = r.status;
+                        throw err;
+                    });
+                }
+                return r.ok ? r.json() : Promise.reject(new Error('加载失败 HTTP ' + r.status));
+            })
+            .then(function (data) {
+                var text = base64Decode(data.content);
+                editFile = fileParam;
+                editSha = data.sha;
+                var fm = text.split('---')[1] || '';
+                var t = fm.match(/^title:\s*"?([^"\n]+)"?\s*$/m);
+                var d = fm.match(/^date:\s*([^\n]+)\s*$/m);
+                if (t) titleInput.value = t[1].trim();
+                if (d) dateInput.value = d[1].trim();
+                var body = text.replace(/^---[\s\S]*?---\s*/, '').trim();
+                mde.value(body);
+                updateStats();
+                setStatus('正在编辑：' + fileParam.split('/').pop(), 'ok');
+                document.title = '编辑 - ' + (t ? t[1].trim() : '');
+            })
+            .catch(function (e) { setStatus('加载失败：' + e.message, 'err'); });
+    }
+
+    // ==== 发布（新建或更新）====
+    document.getElementById('c-publish').addEventListener('click', function () {
+        var btn = this;
+        var title = titleInput.value.trim();
+        var mdText = buildMd();
+        var token = getToken();
+
+        if (!title) { setStatus('请先填写文章标题', 'err'); titleInput.focus(); return; }
+        if (!mde.value().trim()) { setStatus('请先输入文章内容', 'err'); mde.codemirror.focus(); return; }
+        if (!token) { setStatus('请先填入 GitHub Token', 'err'); tokenInput.focus(); return; }
+
+        var path, payload;
+        if (editFile && editSha) {
+            path = editFile;
+            payload = { message: 'Update: ' + title, content: base64Unicode(mdText), sha: editSha, branch: PUB_BRANCH };
+        } else {
+            path = 'source/_posts/' + slugify(title) + '.md';
+            payload = { message: 'Post: ' + title, content: base64Unicode(mdText), branch: PUB_BRANCH };
+        }
+
+        btn.disabled = true;
+        setStatus('提交中…', 'busy');
+        fetch(apiUrl(path), {
+            method: 'PUT',
+            headers: apiHeaders(token),
+            body: JSON.stringify(payload)
+        }).then(function (res) {
+            if (res.ok) {
+                try { localStorage.setItem(TOKEN_KEY, token); } catch (e) {}
+                setStatus('已提交 ✓ 自动部署中（约 1-2 分钟上线）', 'ok');
+                return res.json();
+            }
+            return res.json().then(function (err) {
+                var msg = err.message || ('HTTP ' + res.status);
+                if (res.status === 401) msg = 'Token 无效，请检查';
+                if (res.status === 422) msg = editFile ? '更新失败（文件已变化，请刷新重试）' : '同名文章已存在，请换一个标题';
+                throw new Error(msg);
+            });
+        }).catch(function (e) {
+            setStatus('发布失败：' + e.message, 'err');
+        }).finally(function () {
+            btn.disabled = false;
+        });
+    });
+
+    // ==== 复制 / 下载 / 清空 ====
+    document.getElementById('c-copy').addEventListener('click', function () {
+        var text = buildMd();
+        function done() { this.textContent = '已复制 ✓'; var b = this; setTimeout(function () { b.textContent = '复制 Markdown'; }, 1500); }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(done.bind(this)).catch(function () { fallbackCopy(text); done.call(this); }.bind(this));
+        } else { fallbackCopy(text); done.call(this); }
+    });
+    function fallbackCopy(text) {
+        var ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+    }
+
+    document.getElementById('c-download').addEventListener('click', function () {
+        var blob = new Blob([buildMd()], { type: 'text/markdown;charset=utf-8' });
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = slugify(titleInput.value || 'untitled') + '.md';
+        document.body.appendChild(a); a.click();
+        setTimeout(function () { URL.revokeObjectURL(a.href); document.body.removeChild(a); }, 500);
+        this.textContent = '已下载 ✓';
+        var b = this; setTimeout(function () { b.textContent = '下载 .md'; }, 1500);
+    });
+
+    document.getElementById('c-clear').addEventListener('click', function () {
+        if (mde.value() && !confirm('确定清空编辑器内容？')) return;
+        mde.value(''); updateStats();
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') {
+            e.preventDefault();
+            document.getElementById('c-download').click();
+        }
+    });
+})();
+</script>
+<style>
+#compose-wrap { padding: 130px 24px 40px; max-width: 1200px; margin: 0 auto; }
+.compose-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.compose-bar input[type=text], .compose-bar input[type=password] { padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; }
+#c-title { flex: 1; min-width: 200px; font-size: 15px; }
+#c-date { width: 200px; }
+#c-token { width: 220px; font-size: 13px; }
+.compose-stats { color: #888; font-size: 13px; white-space: nowrap; }
+.compose-spacer { flex: 1; }
+.compose-bar button { padding: 7px 14px; border: 1px solid #ddd; background: #fff; border-radius: 6px; cursor: pointer; font-size: 13px; color: #444; }
+.compose-bar button:hover { background: #f5f5f5; }
+.compose-publish { background: #2c5f2d !important; color: #fff !important; border-color: #2c5f2d !important; }
+.compose-publish:hover { background: #3a7a3b !important; }
+.compose-publish:disabled { opacity: 0.6; cursor: wait; }
+.compose-danger:hover { background: #fdeaea !important; color: #c33; }
+.compose-status { font-size: 13px; white-space: nowrap; }
+.compose-status.ok { color: #2c5f2d; }
+.compose-status.err { color: #c33; }
+.compose-status.busy { color: #b8860b; }
+.compose-hint { margin-top: 10px; font-size: 12.5px; color: #999; }
+.compose-hint code { background: #f4f4f4; padding: 1px 5px; border-radius: 4px; font-family: Consolas, monospace; }
+/* EasyMDE 与主题风格对齐 */
+.EasyMDEContainer { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; position: relative !important; }
+.editor-toolbar { border: none; border-bottom: 1px solid #eee; background: #fafafa; }
+.editor-toolbar button { border: none; }
+.editor-statusbar { padding: 5px 10px; font-size: 12px; color: #999; border-top: 1px solid #eee; }
+.CodeMirror { border: none; font-family: 'Source Code Pro', Consolas, monospace; font-size: 14px; line-height: 1.7; }
+.editor-preview-side, .editor-preview, .editor-preview-full { background: #fff; }
+/* ==== 预览模式修复:隐藏编辑区,预览正确铺满 ==== */
+/* 完整预览元素位于 CodeMirror 包装器内部,只能隐藏滚动区(visibility 保持布局),
+   不能 display:none 整个 CodeMirror(会把预览一起藏掉) */
+.EasyMDEContainer.editor-preview-active .CodeMirror-scroll { visibility: hidden; }
+.EasyMDEContainer.editor-preview-active .editor-preview-full {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    width: auto; height: auto; z-index: 7; background: #fff; overflow: auto;
+}
+/* 侧边预览:左右分栏 */
+.EasyMDEContainer.editor-preview-active-side { display: flex; }
+.EasyMDEContainer.editor-preview-active-side .CodeMirror { width: 50% !important; }
+.EasyMDEContainer.editor-preview-active-side .editor-preview-side {
+    position: static; width: 50%; height: auto; top: auto; right: auto; bottom: auto;
+    border: none; border-left: 1px solid #eee;
+}
+/* MathJax 公式在预览中不溢出 */
+.editor-preview .MathJax_Display, .editor-preview-side .MathJax_Display, .editor-preview-full .MathJax_Display { overflow-x: auto; overflow-y: hidden; }
+@media (max-width: 800px) {
+    #compose-wrap { padding: 120px 12px 30px; }
+    #c-token { width: 100%; }
+}
+</style>
+</html>

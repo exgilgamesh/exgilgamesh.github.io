@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>matrix_fast_power - Hexo</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="矩阵快速幂加速递推来自本人luogu的blog搬运
+#include &amp;lt;iostream&gt;
+#define ll long long
+using namespace std;
+const in,"> 
+    <meta name="author" content="John Doe"> 
+    <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="matrix_fast_power - Hexo"/>
+    <meta name="twitter:description" content="矩阵快速幂加速递推来自本人luogu的blog搬运
+#include &amp;lt;iostream&gt;
+#define ll long long
+using namespace std;
+const in,"/>
+    
+    
+    
+    
+    <meta property="og:site_name" content="Hexo"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="matrix_fast_power - Hexo"/>
+    <meta property="og:description" content="矩阵快速幂加速递推来自本人luogu的blog搬运
+#include &amp;lt;iostream&gt;
+#define ll long long
+using namespace std;
+const in,"/>
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script>window.searchDbPath = "/search.xml";</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Hexo</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://ritayi.top"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">matrix_fast_power</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">matrix_fast_power</h1>
+        <div class="stuff">
+            <span>十月 30, 2021</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h2 id="矩阵快速幂加速递推"><a href="#矩阵快速幂加速递推" class="headerlink" title="矩阵快速幂加速递推"></a>矩阵快速幂加速递推</h2><p>来自本人luogu的blog搬运</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ll</span> <span class="token expression"><span class="token keyword">long</span> <span class="token keyword">long</span></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span> maxn <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">,</span> maxm <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> mod<span class="token punctuation">;</span>
+<span class="token keyword">struct</span> <span class="token class-name">matrix</span>
+<span class="token punctuation">&#123;</span>
+  <span class="token keyword">int</span> n<span class="token punctuation">,</span> m<span class="token punctuation">;</span>
+  ll s<span class="token punctuation">[</span>maxn<span class="token punctuation">]</span><span class="token punctuation">[</span>maxm<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token function">matrix</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token function">clean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token keyword">void</span> <span class="token function">clean</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#123;</span>
+    n <span class="token operator">=</span> maxn<span class="token punctuation">,</span> m <span class="token operator">=</span> maxm<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+        s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span> A<span class="token punctuation">,</span> F0<span class="token punctuation">;</span>                             <span class="token comment">//F0为初始矩阵，A为构造出的矩阵</span>
+<span class="token keyword">long</span> <span class="token keyword">long</span> ss<span class="token punctuation">[</span>maxn<span class="token punctuation">]</span><span class="token punctuation">;</span>
+matrix <span class="token keyword">operator</span><span class="token operator">*</span><span class="token punctuation">(</span>matrix a<span class="token punctuation">,</span> matrix b<span class="token punctuation">)</span> <span class="token comment">//重载*运算符</span>
+<span class="token punctuation">&#123;</span>
+  matrix c<span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">.</span>m <span class="token operator">!=</span> b<span class="token punctuation">.</span>n<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> c<span class="token punctuation">;</span>
+  c<span class="token punctuation">.</span>n <span class="token operator">=</span> a<span class="token punctuation">.</span>n<span class="token punctuation">,</span> c<span class="token punctuation">.</span>m <span class="token operator">=</span> a<span class="token punctuation">.</span>m<span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> c<span class="token punctuation">.</span>m<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> c<span class="token punctuation">.</span>n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+      ss<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">.</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> c<span class="token punctuation">.</span>n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> k <span class="token operator">&lt;</span> a<span class="token punctuation">.</span>m<span class="token punctuation">;</span> k<span class="token operator">++</span><span class="token punctuation">)</span>
+        c<span class="token punctuation">.</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+=</span> a<span class="token punctuation">.</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">*</span> ss<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span>
+      c<span class="token punctuation">.</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">%=</span> mod<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token keyword">return</span> c<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+matrix <span class="token function">pow</span><span class="token punctuation">(</span>matrix a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+  matrix ans<span class="token punctuation">;</span>
+  ans<span class="token punctuation">.</span>n <span class="token operator">=</span> a<span class="token punctuation">.</span>n<span class="token punctuation">,</span> ans<span class="token punctuation">.</span>m <span class="token operator">=</span> a<span class="token punctuation">.</span>m<span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> a<span class="token punctuation">.</span>n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> a<span class="token punctuation">.</span>m<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+      ans<span class="token punctuation">.</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>i <span class="token operator">==</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//构造单位矩阵</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">&amp;</span> <span class="token number">1</span><span class="token punctuation">)</span>
+      ans <span class="token operator">=</span> ans <span class="token operator">*</span> a<span class="token punctuation">;</span>
+    a <span class="token operator">=</span> a <span class="token operator">*</span> a<span class="token punctuation">;</span>
+    b <span class="token operator">=</span> b <span class="token operator">>></span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">int</span> n<span class="token punctuation">,</span> k <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">//k为初始值个数，根据需要取</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> k<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    cin <span class="token operator">>></span> A<span class="token punctuation">.</span>s<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> k<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    A<span class="token punctuation">.</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> k<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    cin <span class="token operator">>></span> F0<span class="token punctuation">.</span>s<span class="token punctuation">[</span>k <span class="token operator">-</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  cin <span class="token operator">>></span> n <span class="token operator">>></span> mod<span class="token punctuation">;</span>
+  A<span class="token punctuation">.</span>m <span class="token operator">=</span> A<span class="token punctuation">.</span>n <span class="token operator">=</span> k<span class="token punctuation">,</span> F0<span class="token punctuation">.</span>m <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> F0<span class="token punctuation">.</span>n <span class="token operator">=</span> k<span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;</span> k<span class="token punctuation">)</span>
+  <span class="token punctuation">&#123;</span>
+    cout <span class="token operator">&lt;&lt;</span> F0<span class="token punctuation">.</span>s<span class="token punctuation">[</span>k <span class="token operator">-</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  cout <span class="token operator">&lt;&lt;</span> <span class="token punctuation">(</span><span class="token function">pow</span><span class="token punctuation">(</span>A<span class="token punctuation">,</span> n <span class="token operator">-</span> k<span class="token punctuation">)</span> <span class="token operator">*</span> F0<span class="token punctuation">)</span><span class="token punctuation">.</span>s<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+<audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+    <source type="audio/mpeg" src="">
+</audio>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="http://link.hhtjim.com/163/2692705089.mp3"></li>
+                        
+                    
+                        
+                            <li title="1" data-url="http://link.hhtjim.com/163/2692705091.mp3"></li>
+                        
+                    
+                        
+                            <li title="2" data-url="http://link.hhtjim.com/163/2692705856.mp3"></li>
+                        
+                    
+                        
+                            <li title="3" data-url="http://link.hhtjim.com/163/2692705857.mp3"></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+        
+    <div id="gitalk-container" class="comment link"
+		data-enable="false"
+        data-ae="false"
+        data-ci=""
+        data-cs=""
+        data-r=""
+        data-o=""
+        data-a=""
+        data-d="false"
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js"></script>
+<script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script>
+
+
+
+
+
+</html>
